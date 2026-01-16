@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drug Interaction Checker | Safe Medication Management</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">DrugInteraction<span>Check</span></h1>
+            <nav>
+                <a href="admin.html" class="admin-link">Admin Panel</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="search-section">
+            <h2>Check Drug Interactions</h2>
+            <p class="subtitle">Enter multiple drugs to check for potential interactions</p>
+            
+            <div class="search-container">
+                <div class="drug-input-group">
+                    <input type="text" id="drug-search" placeholder="Search for a drug..." autocomplete="off">
+                    <div id="search-results" class="search-results"></div>
+                </div>
+                
+                <button id="add-drug" class="btn-primary">Add Drug to List</button>
+            </div>
+
+            <div id="selected-drugs" class="selected-drugs">
+                <h3>Selected Drugs (0)</h3>
+                <div id="drug-list" class="drug-list"></div>
+            </div>
+
+            <div class="actions">
+                <button id="check-interactions" class="btn-primary large" disabled>
+                    Check Interactions
+                </button>
+                <button id="clear-all" class="btn-secondary">
+                    Clear All
+                </button>
+            </div>
+        </section>
+
+        <section id="results-section" class="results-section hidden">
+            <h2>Interaction Results</h2>
+            <div id="interaction-results" class="interaction-results">
+                <!-- Results will be populated here -->
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h3>About This Tool</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Serious Interactions</h4>
+                    <p>Potentially life-threatening combinations that require immediate medical attention.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Moderate Interactions</h4>
+                    <p>Combinations that may require dosage adjustments or close monitoring.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Minor Interactions</h4>
+                    <p>Combinations with limited clinical significance but should be noted.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>For informational purposes only. Always consult healthcare professionals.</p>
+            <p class="disclaimer">This tool does not replace professional medical advice.</p>
+        </div>
+    </footer>
+
+    <script src="js/database.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

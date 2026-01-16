@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Drug Interaction Management</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>Drug Interaction Admin Panel</h1>
+            <nav class="admin-nav">
+                <a href="index.html" class="nav-link">Back to Search</a>
+                <button id="export-data" class="btn-secondary">Export Data</button>
+                <button id="import-data" class="btn-secondary">Import Data</button>
+                <button id="reset-data" class="btn-danger">Reset All Data</button>
+            </nav>
+        </header>
+
+        <main class="admin-main">
+            <div class="admin-sidebar">
+                <h3>Management Sections</h3>
+                <div class="nav-buttons">
+                    <button class="nav-btn active" data-section="drugs">Manage Drugs</button>
+                    <button class="nav-btn" data-section="interactions">Manage Interactions</button>
+                    <button class="nav-btn" data-section="categories">Drug Categories</button>
+                    <button class="nav-btn" data-section="severity">Severity Levels</button>
+                </div>
+                
+                <div class="stats-panel">
+                    <h4>Database Statistics</h4>
+                    <div class="stat-item">
+                        <span>Total Drugs:</span>
+                        <span id="stat-drugs">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Total Interactions:</span>
+                        <span id="stat-interactions">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Categories:</span>
+                        <span id="stat-categories">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-content">
+                <!-- Drugs Management Section -->
+                <section id="drugs-section" class="management-section active">
+                    <div class="section-header">
+                        <h2>Manage Drugs</h2>
+                        <button id="add-drug-btn" class="btn-primary">Add New Drug</button>
+                    </div>
+                    
+                    <div class="search-filter">
+                        <input type="text" id="drug-search-admin" placeholder="Search drugs..." class="search-input">
+                        <select id="category-filter" class="filter-select">
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="drugs-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Drug Name</th>
+                                    <th>Generic Name</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="drugs-list">
+                                <!-- Drugs will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Interactions Management Section -->
+                <section id="interactions-section" class="management-section">
+                    <div class="section-header">
+                        <h2>Manage Interactions</h2>
+                        <button id="add-interaction-btn" class="btn-primary">Add New Interaction</button>
+                    </div>
+                    
+                    <div class="search-filter">
+                        <select id="interaction-drug1" class="drug-select">
+                            <option value="">Select First Drug</option>
+                        </select>
+                        <select id="interaction-drug2" class="drug-select">
+                            <option value="">Select Second Drug</option>
+                        </select>
+                        <select id="severity-filter" class="filter-select">
+                            <option value="">All Severity Levels</option>
+                        </select>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="interactions-table">
+                            <thead>
+                                <tr>
+                                    <th>Drug A</th>
+                                    <th>Drug B</th>
+                                    <th>Severity</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="interactions-list">
+                                <!-- Interactions will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Categories Management Section -->
+                <section id="categories-section" class="management-section">
+                    <div class="section-header">
+                        <h2>Drug Categories</h2>
+                        <button id="add-category-btn" class="btn-primary">Add Category</button>
+                    </div>
+                    
+                    <div class="categories-grid" id="categories-list">
+                        <!-- Categories will be populated here -->
+                    </div>
+                </section>
+
+                <!-- Severity Levels Section -->
+                <section id="severity-section" class="management-section">
+                    <div class="section-header">
+                        <h2>Interaction Severity Levels</h2>
+                    </div>
+                    
+                    <div class="severity-levels" id="severity-levels">
+                        <!-- Severity levels will be populated here -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for adding/editing -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Add New Drug</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Dynamic content based on what we're editing -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary cancel-btn">Cancel</button>
+                <button class="btn-primary save-btn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/database.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
